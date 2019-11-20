@@ -1,0 +1,29 @@
+.topnav {
+  margin: 0;
+  background: white;
+}
+
+.topnav a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 12px;
+  color: black;
+}
+
+.feed-container {
+  margin-top: 20px;
+}
+
+.feed {
+  background: white;
+  border: solid gray 1px;
+  width: 40%;
+  padding: 12px;
+  margin: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+}
