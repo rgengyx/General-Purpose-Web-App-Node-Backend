@@ -1,7 +1,7 @@
 var title = "";
 var text = "";
 
-document.getElementById("submit-btn").onclick = function() {
+$("#submit-btn").click(function() {
   title = $("input").val();
   text = $("textarea").val();
 
@@ -21,4 +21,4 @@ document.getElementById("submit-btn").onclick = function() {
       console.log("error");
     }
   });
-};
+});

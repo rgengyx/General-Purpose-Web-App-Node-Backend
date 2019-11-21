@@ -1,0 +1,17 @@
+.chat-container {
+  background: white;
+  width: 50%;
+  height: 300px;
+}
+
+textarea {
+  margin: 4px;
+  width: 50%;
+  height: 60px;
+}
+
+.message {
+  background: lightgreen;
+  margin: 4px;
+  padding: 4px;
+}
