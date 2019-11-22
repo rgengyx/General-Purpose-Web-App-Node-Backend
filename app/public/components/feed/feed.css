@@ -12,13 +12,15 @@
 }
 
 .feed-container {
+  margin: auto;
   margin-top: 20px;
+  width: 40%;
 }
 
 .feed {
   background: white;
   border: solid gray 1px;
-  width: 40%;
+  width: 100%;
   padding: 12px;
   margin: 4px;
 }
@@ -26,4 +28,6 @@
 .title {
   font-size: 20px;
   font-weight: 800;
+  text-decoration: none;
+  color: black;
 }

@@ -1,7 +1,9 @@
 .add-post-form {
+  margin: auto;
+  margin-top: 60px;
   background: white;
   padding: 12px;
-  width: 60%;
+  width: 40%;
 }
 
 .title {

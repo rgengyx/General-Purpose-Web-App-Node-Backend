@@ -1,6 +1,8 @@
-$("#add-post-btn").click(function() {
-  location.href = "../add_post/add_post.html";
-});
+$(".topnav").load("../navbar/navbar.html");
+$.getScript("../navbar/navbar.js");
+$("head").append(
+  '<link rel="stylesheet" href="../navbar/navbar.css" type="text/css" />'
+);
 
 $.ajax({
   type: "GET",
@@ -10,9 +12,9 @@ $.ajax({
   $.each(data, function(index, value) {
     $(".feed-container").append(
       '<div class="feed">' +
-        '<div class="title">' +
+        '<a class="title" href="">' +
         value.title +
-        "</div>" +
+        "</a>" +
         '<div class="content">' +
         value.text +
         "</div>" +

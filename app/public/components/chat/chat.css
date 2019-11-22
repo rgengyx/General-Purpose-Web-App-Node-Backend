@@ -1,13 +1,28 @@
 .chat-container {
   background: white;
-  width: 50%;
+  width: 40%;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.message-container {
+  background: white;
+  border: 4px solid gray;
   height: 300px;
 }
 
 textarea {
+  width: 90%;
+  height: 40px;
+  border: 1px solid lightgray;
+}
+
+#send-btn {
+  position: absolute;
   margin: 4px;
-  width: 50%;
-  height: 60px;
+  padding: 12px;
+  background: lightskyblue;
+  border: none;
 }
 
 .message {

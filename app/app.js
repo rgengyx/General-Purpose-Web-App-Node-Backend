@@ -5,6 +5,9 @@ const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
+const feed = require("../app/controllers/feed");
+const authentication = require("../app/controllers/authentication");
+
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
@@ -13,8 +16,8 @@ server.listen(PORT, () => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const model = require("../app/controllers/feed");
-app.use(model);
+app.use(feed);
+app.use(authentication);
 
 var connections = [];
 

@@ -21,7 +21,9 @@ app.post("/storeFeed", function(req, res) {
     title: req.body.title,
     text: req.body.text
   };
-  feed.storeFeed(post);
+  feed.storeFeed(post, function(result) {
+    res.send(result);
+  });
 });
 
 module.exports = app;

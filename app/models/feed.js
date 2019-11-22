@@ -10,10 +10,11 @@ exports.fetchFeed = function(callback) {
   });
 };
 
-exports.storeFeed = function(post) {
+exports.storeFeed = function(post, callback) {
   var sql = "INSERT INTO feed (id, title, text) VALUES ?";
   var values = [[post.id, post.title, post.text]];
   con.query(sql, [values], function(err) {
     if (err) throw err;
+    callback(true);
   });
 };
