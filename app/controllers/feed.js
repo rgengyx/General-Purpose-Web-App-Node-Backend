@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const uuidv4 = require("uuid/v4");
 const feed = require("../models/feed");
-
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());

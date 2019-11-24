@@ -1,16 +1,14 @@
 const express = require("express");
 const app = express();
-
 const uuidv4 = require("uuid/v4");
-
 const authentication = require("../models/authentication");
-
 const bodyParser = require("body-parser");
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/signup", function(req, res) {
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
@@ -22,6 +20,26 @@ app.post("/signup", function(req, res) {
       password: hash
     };
     authentication.signup(user, function(result) {
+      if (result == "0") {
+        jwt.sign(
+          {
+            id: uuidv4(),
+            username: req.body.username,
+            email: req.body.email
+          },
+          "secretkey",
+          (err, token) => {
+            res.send({
+              user: {
+                id: user.id,
+                username: user.username,
+                token: token
+              }
+            });
+          }
+        );
+        return;
+      }
       res.send(result);
     });
   });
