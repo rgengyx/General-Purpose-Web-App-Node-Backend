@@ -35,9 +35,7 @@ $("#login-form").submit(function(event) {
       data: values,
       dataType: "json",
       success: function(res) {
-        if (res == "0") {
-          location.href = "../feed/feed.html";
-        } else if (res == "1") {
+        if (res == "1") {
           $("#email-field").css("border", "2px solid red");
           if ($("#email-exist").length == 0) {
             $(
@@ -51,6 +49,9 @@ $("#login-form").submit(function(event) {
               "<div class='error' id='password-exist'>Error: Password is incorrect.</div>"
             ).insertAfter("#password-field");
           }
+        } else {
+          localStorage.setItem("user", JSON.stringify(res.user));
+          location.href = "../feed/feed.html";
         }
       }
     });

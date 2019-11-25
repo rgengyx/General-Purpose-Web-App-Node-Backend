@@ -20,27 +20,30 @@ app.post("/signup", function(req, res) {
       password: hash
     };
     authentication.signup(user, function(result) {
-      if (result == "0") {
-        jwt.sign(
-          {
-            id: uuidv4(),
-            username: req.body.username,
-            email: req.body.email
-          },
-          "secretkey",
-          (err, token) => {
-            res.send({
-              user: {
-                id: user.id,
-                username: user.username,
-                token: token
-              }
-            });
-          }
-        );
+      if (result != "0") {
+        res.send(result);
         return;
       }
-      res.send(result);
+
+      // Sign in successfully
+      jwt.sign(
+        {
+          id: uuidv4(),
+          username: req.body.username,
+          email: req.body.email
+        },
+        "secretkey",
+        (err, token) => {
+          res.send({
+            user: {
+              id: user.id,
+              username: user.username,
+              token: token
+            }
+          });
+        }
+      );
+      return;
     });
   });
 });
@@ -59,16 +62,33 @@ app.post("/login", function(req, res) {
 
     bcrypt.compare(req.body.password, result[0].password, function(
       err,
-      result
+      result2
     ) {
       // Error: password incorrect
-      if (!result) {
+      if (!result2) {
         res.send("2");
         return;
       }
 
       // Sign in successfully
-      res.send("0");
+      jwt.sign(
+        {
+          id: result[0].id,
+          username: result[0].username,
+          email: result[0].email
+        },
+        "secretkey",
+        (err, token) => {
+          res.send({
+            user: {
+              id: result[0].id,
+              username: result[0].username,
+              token: token
+            }
+          });
+        }
+      );
+      return;
     });
   });
 });
