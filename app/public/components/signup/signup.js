@@ -55,14 +55,14 @@ $("#signup-form").submit(function(event) {
       data: values,
       dataType: "json",
       success: function(res) {
-        if (res == "1") {
+        if (res.error == "email already exists") {
           $("#email-field").css("border", "2px solid red");
           if ($("#email-exist").length == 0) {
             $(
               "<div class='error' id='email-exist'>Error: Email already exists.</div>"
             ).insertAfter("#email-field");
           }
-        } else if (res == "2") {
+        } else if (res.error == "username already exists") {
           $("#username-field").css("border", "2px solid red");
           if ($("#username-exist").length == 0) {
             $(

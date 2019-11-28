@@ -1,5 +1,3 @@
-const express = require("express");
-const app = express();
 const con = require("../config/db");
 
 exports.fetchFeed = function(callback) {
@@ -11,8 +9,11 @@ exports.fetchFeed = function(callback) {
 };
 
 exports.storeFeed = function(post, callback) {
-  var sql = "INSERT INTO feed (id, title, text) VALUES ?";
-  var values = [[post.id, post.title, post.text]];
+  var sql =
+    "INSERT INTO feed (id, title, text, userId, username, time) VALUES ?";
+  var values = [
+    [post.id, post.title, post.text, post.userId, post.username, post.time]
+  ];
   con.query(sql, [values], function(err) {
     if (err) throw err;
     callback(true);

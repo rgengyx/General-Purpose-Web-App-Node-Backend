@@ -18,7 +18,9 @@ $("#submit-btn").click(function() {
     url: "http://localhost:5000/storeFeed",
     data: JSON.stringify({
       title: title,
-      text: text
+      text: text,
+      userId: JSON.parse(localStorage.getItem("user")).id,
+      username: JSON.parse(localStorage.getItem("user")).username
     }),
     dataType: "json",
     contentType: "application/json",

@@ -4,7 +4,8 @@ $("#add-post-btn").click(function() {
 
 if (localStorage.getItem("user") == undefined) {
   $(".user").html(
-    '<a href="../signup/signup.html">Sign up</a><a href="../login/login.html">Log in</a>'
+    '<a href="../signup/signup.html">Sign up</a>' +
+      '<a href="../login/login.html">Log in</a>'
   );
 } else {
   $(".user").html(

@@ -12,38 +12,49 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/signup", function(req, res) {
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
+    // Store uesr in users DB.
     user = {
       id: uuidv4(),
       email: req.body.email,
       username: req.body.username,
       password: hash
     };
-    authentication.signup(user, function(result) {
-      if (result != "0") {
-        res.send(result);
-        return;
-      }
 
-      // Sign in successfully
-      jwt.sign(
-        {
-          id: uuidv4(),
-          username: req.body.username,
-          email: req.body.email
-        },
-        "secretkey",
-        (err, token) => {
-          res.send({
-            user: {
-              id: user.id,
-              username: user.username,
-              token: token
-            }
-          });
-        }
-      );
-      return;
+    authentication.verifyEmail(user, function(result) {
+      // Verify if email exists
+      if (result.length > 0) {
+        res.send({ error: "email already exists" });
+        return;
+      } else {
+        authentication.verifyUsername(user, function(result) {
+          // Verify if username exists
+          if (result.length > 0) {
+            res.send({ error: "username already exists" });
+            return;
+          } else {
+            authentication.storeUser(function() {
+              // Sign in successfully
+              jwt.sign(
+                {
+                  id: uuidv4(),
+                  username: req.body.username,
+                  email: req.body.email
+                },
+                "secretkey",
+                (err, token) => {
+                  res.send({
+                    user: {
+                      id: user.id,
+                      username: user.username,
+                      token: token
+                    }
+                  });
+                }
+              );
+            });
+          }
+        });
+      }
     });
   });
 });
@@ -53,10 +64,10 @@ app.post("/login", function(req, res) {
     id: uuidv4(),
     email: req.body.email
   };
-  authentication.login(user, function(result) {
-    // Error: email does not exist: code 1
+  authentication.verifyEmail(user, function(result) {
+    // Error: email does not exist
     if (result.length == 0) {
-      res.send("1");
+      res.send({ error: "email doesnt exist" });
       return;
     }
 
@@ -66,7 +77,7 @@ app.post("/login", function(req, res) {
     ) {
       // Error: password incorrect
       if (!result2) {
-        res.send("2");
+        res.send({ error: "password is incorrect" });
         return;
       }
 

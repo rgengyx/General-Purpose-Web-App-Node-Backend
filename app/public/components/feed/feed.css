@@ -12,22 +12,48 @@
 }
 
 .feed-container {
-  margin: auto;
+  float: left;
   margin-top: 20px;
-  width: 40%;
+  width: 800px;
 }
 
 .feed {
   background: white;
-  border: solid gray 1px;
+  border: 1px solid green;
   width: 100%;
-  padding: 12px;
-  margin: 4px;
+  /* padding: 12px; */
 }
 
-.title {
+.title a {
   font-size: 20px;
   font-weight: 800;
   text-decoration: none;
   color: black;
+}
+
+.username {
+  padding-top: 4px;
+}
+
+.username a {
+  text-decoration: none;
+  color: black;
+  padding-top: 4px;
+}
+
+.time {
+  font-size: 12px;
+  color: gray;
+}
+
+.content {
+  padding-top: 4px;
+}
+
+.contact-list {
+  margin-top: 20px;
+  float: left;
+  width: 200px;
+  background: white;
+  border: 1px solid red;
 }
