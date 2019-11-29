@@ -1,3 +1,9 @@
+$(".search-bar").load("../searchBar/searchBar.html");
+$.getScript("../searchBar/searchBar.js");
+$("head").append(
+  '<link rel="stylesheet" href="../searchBar/searchBar.css" type="text/css" />'
+);
+
 $("#add-post-btn").click(function() {
   location.href = "../add_post/add_post.html";
 });
