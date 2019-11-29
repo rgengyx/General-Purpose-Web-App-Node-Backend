@@ -11,7 +11,7 @@ $.ajax({
   success: function(res) {
     $.each(res, function(index, value) {
       $(".contact-list").append(
-        "<div><a href='../chat/chat.html?user=" +
+        "<div><a href='../user/user.html?user=" +
           value.friendId +
           "'>" +
           value.friendUsername +

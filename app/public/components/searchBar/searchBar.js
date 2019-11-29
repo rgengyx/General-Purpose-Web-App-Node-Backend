@@ -10,7 +10,7 @@ $(".search").bind("input propertychange", function() {
       $(".dropdown-container").empty();
       $.each(response, function(index, value) {
         $(".dropdown-container").append(
-          "<div class='dropdown'><a href='../chat/chat.html?user=" +
+          "<div class='dropdown'><a href='../user/user.html?user=" +
             value.id +
             "'>" +
             value.username +
