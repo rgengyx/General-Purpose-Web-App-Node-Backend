@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/fetchSearchResult", function(req, res) {
   var input = req.body;
-  console.log(input);
   search.fetchSearchResult(input, function(result) {
     res.send(result);
   });

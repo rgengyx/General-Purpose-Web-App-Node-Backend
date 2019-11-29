@@ -15,3 +15,27 @@ exports.fetchUserInfo = function(user, callback) {
     callback(result);
   });
 };
+
+exports.addFriend = function(request, callback) {
+  var sql = "INSERT INTO friends (id, friendId, friendUsername) VALUES ?";
+  let values = [
+    [request.senderId, request.receiverId, request.receiverUsername]
+  ];
+  con.query(sql, [values], function(err, result) {
+    if (err) throw err;
+    callback(true);
+  });
+};
+
+exports.deleteFriend = function(request, callback) {
+  var sql =
+    "DELETE FROM friends WHERE id = '" +
+    request.senderId +
+    "' AND friendId = '" +
+    request.receiverId +
+    "'";
+  con.query(sql, function(err, result) {
+    if (err) throw err;
+    callback(true);
+  });
+};

@@ -5,7 +5,7 @@ $("head").append(
 );
 
 $("#add-post-btn").click(function() {
-  location.href = "../add_post/add_post.html";
+  location.href = "../addPost/addPost.html";
 });
 
 if (localStorage.getItem("user") == undefined) {

@@ -1,7 +1,7 @@
 const con = require("../config/db");
 
 exports.fetchFeed = function(callback) {
-  sql = "SELECT * FROM feed";
+  sql = "SELECT * FROM feed ORDER BY time DESC";
   con.query(sql, function(err, result) {
     if (err) throw err;
     callback(result);

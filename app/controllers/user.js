@@ -22,4 +22,18 @@ app.post("/fetchUserInfo", function(req, res) {
   });
 });
 
+app.post("/addFriend", function(req, res) {
+  var request = req.body;
+  user.addFriend(request, function(result) {
+    res.send(result);
+  });
+});
+
+app.post("/deleteFriend", function(req, res) {
+  var request = req.body;
+  user.deleteFriend(request, function(result) {
+    res.send(result);
+  });
+});
+
 module.exports = app;
