@@ -17,20 +17,22 @@ $.ajax({
 }).done(function(data) {
   $.each(data, function(index, value) {
     $(".feed-container").append(
-      '<div class="feed">' +
-        '<div class="title"><a href="">' +
+      '<div class="feed"><a href="../postPage/postPage.html?post=' +
+        value.id +
+        '" target="_blank">' +
+        "<div class='title'>" +
         value.title +
-        "</a></div>" +
-        '<div class="username"><a href="">' +
+        "</div>" +
+        '<div class="username">' +
         value.username +
-        "</a></div>" +
+        "</div>" +
         '<div class="time">' +
         value.time +
         "</div>" +
         '<div class="content">' +
         value.text +
         "</div>" +
-        "</div>"
+        "</a></div>"
     );
   });
 });

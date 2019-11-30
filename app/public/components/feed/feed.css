@@ -4,11 +4,20 @@
   width: 800px;
 }
 
+.feed-container a {
+  text-decoration: none;
+  color: black;
+}
+
 .feed {
   background: white;
-  border: 1px solid green;
   width: 100%;
+  border: 1px solid gray;
   /* padding: 12px; */
+}
+
+.feed:hover {
+  border: 2px solid gray;
 }
 
 .title a {

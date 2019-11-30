@@ -13,6 +13,13 @@ app.get("/fetchFeed", function(req, res) {
   });
 });
 
+app.post("/fetchPost", function(req, res) {
+  var post = req.body;
+  feed.fetchPost(post, function(result) {
+    res.send(result);
+  });
+});
+
 app.post("/storeFeed", function(req, res) {
   post = {
     id: uuidv4(),

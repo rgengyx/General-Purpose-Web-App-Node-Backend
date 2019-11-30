@@ -8,6 +8,14 @@ exports.fetchFeed = function(callback) {
   });
 };
 
+exports.fetchPost = function(post, callback) {
+  var sql = "SELECT * FROM feed WHERE id = '" + post.id + "'";
+  con.query(sql, function(err, result) {
+    if (err) throw err;
+    callback(result);
+  });
+};
+
 exports.storeFeed = function(post, callback) {
   var sql =
     "INSERT INTO feed (id, title, text, userId, username, time) VALUES ?";
