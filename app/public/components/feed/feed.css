@@ -1,8 +1,14 @@
-.feed-container {
+.container {
   margin: auto;
   margin-top: 60px;
   min-width: 400px;
-  max-width: 700px;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.main-container {
+  float: left;
 }
 
 .feed-container a {
@@ -12,10 +18,9 @@
 
 .feed {
   background: white;
-  width: 100%;
+  width: 94%;
   border: 1px solid #e0e0e0;
   padding: 16px;
-  margin-top: 8px;
   margin-bottom: 8px;
 }
 
@@ -63,9 +68,9 @@
 }
 
 .contact-list {
-  margin-top: 20px;
   float: left;
   width: 200px;
   background: white;
-  border: 1px solid red;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
 }
