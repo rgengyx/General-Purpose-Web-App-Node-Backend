@@ -1,16 +1,40 @@
 .topnav {
-  margin: 0;
   background: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 1px 1px -1px gray;
 }
 
-.topnav a {
+.topnav-inner {
+  min-width: 400px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.topnav-inner a {
   display: inline-block;
   text-decoration: none;
+  font-weight: bold;
   font-size: 16px;
-  padding: 12px;
-  color: black;
+  padding: 16px;
+  color: #686868;
 }
 
 .search-bar {
   display: inline-block;
+}
+
+.user {
+  float: right;
+}
+
+#add-post-btn {
+  border: none;
+  height: 28px;
+  background: #ffa042;
+  font-weight: bold;
+  color: white;
+  border-radius: 2px;
+  padding: 0 8px;
 }

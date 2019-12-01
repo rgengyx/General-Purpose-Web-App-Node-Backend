@@ -17,7 +17,9 @@ $.ajax({
     username = user.username;
     $(".username").text(username);
     $(".email").text(user.email);
-    $(".chat").attr("href", "../chat/chat.html?user=" + user.id);
+    $(".chat").bind("click", function() {
+      location.href = "../chat/chat.html?user=" + user.id;
+    });
   }
 });
 
@@ -31,53 +33,63 @@ $.ajax({
   success: function(response) {
     for (var i = 0; i < response.length; i++) {
       if (response[i].friendId == userId) {
-        $(".friend-request").html(
-          "<button class='delete-friend'>Remove Friend</button>"
-        );
+        removeFriend();
         return;
       }
     }
-    $(".friend-request").html("<button class='add-friend'>Add Friend</button>");
+    addFriend();
   }
 });
 
-$(".friend-request").on("click", ".add-friend", function() {
-  $.ajax({
-    type: "POST",
-    url: "http://localhost:5000/addFriend",
-    data: {
-      senderId: JSON.parse(localStorage.getItem("user")).id,
-      receiverId: userId,
-      receiverUsername: username
-    },
-    dataType: "json",
-    success: function(response) {
-      $(".friend-request").html(
-        "<button class='delete-friend'>Remove Friend</button>"
-      );
-    },
-    error: function(result) {
-      console.log(result);
-    }
-  });
-});
+function removeFriend() {
+  $("#friend-request")
+    .addClass("delete-friend")
+    .text("Remove Friend")
+    .removeClass("add-friend");
 
-$(".friend-request").on("click", ".delete-friend", function() {
-  $.ajax({
-    type: "POST",
-    url: "http://localhost:5000/deleteFriend",
-    data: {
-      senderId: JSON.parse(localStorage.getItem("user")).id,
-      receiverId: userId
-    },
-    dataType: "json",
-    success: function(response) {
-      $(".friend-request").html(
-        "<button class='add-friend'>Add Friend</button>"
-      );
-    },
-    error: function(result) {
-      console.log(result);
-    }
+  $("#friend-request").unbind();
+  $("#friend-request").bind("click", function() {
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:5000/deleteFriend",
+      data: {
+        senderId: JSON.parse(localStorage.getItem("user")).id,
+        receiverId: userId
+      },
+      dataType: "json",
+      success: function(response) {
+        addFriend();
+      },
+      error: function(result) {
+        console.log(result);
+      }
+    });
   });
-});
+}
+
+function addFriend() {
+  $("#friend-request")
+    .addClass("add-friend")
+    .text("Add Friend")
+    .removeClass("delete-friend");
+
+  $("#friend-request").unbind();
+  $("#friend-request").bind("click", function() {
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:5000/addFriend",
+      data: {
+        senderId: JSON.parse(localStorage.getItem("user")).id,
+        receiverId: userId,
+        receiverUsername: username
+      },
+      dataType: "json",
+      success: function(response) {
+        removeFriend();
+      },
+      error: function(result) {
+        console.log(result);
+      }
+    });
+  });
+}

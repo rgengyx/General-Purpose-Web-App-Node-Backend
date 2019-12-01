@@ -1,5 +1,7 @@
+html,
 body {
   margin: 0;
-  background: lightgray;
+  background: #f8f8f8;
+  font-size: 18px;
   font-family: Helvetica, sans-serif;
 }

@@ -20,14 +20,21 @@ $.ajax({
       '<div class="feed"><a href="../postPage/postPage.html?post=' +
         value.id +
         '" target="_blank">' +
-        "<div class='title'>" +
-        value.title +
-        "</div>" +
+        "<div class='header'>" +
+        "<img src='../../assets/user.png' class='profile-image'/>" +
+        '<div class="info-right">' +
         '<div class="username">' +
+        '<a href="#">' +
         value.username +
+        "</a>" +
         "</div>" +
         '<div class="time">' +
         value.time +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        "<div class='title'>" +
+        value.title +
         "</div>" +
         '<div class="content">' +
         value.text +
