@@ -17,16 +17,15 @@ $.ajax({
 }).done(function(data) {
   $.each(data, function(index, value) {
     $(".feed-container").append(
-      '<div class="feed"><a href="../postPage/postPage.html?post=' +
+      '<div class="feed">' +
+        '<a href="../postPage/postPage.html?post=' +
         value.id +
         '" target="_blank">' +
         "<div class='header'>" +
         "<img src='../../assets/user.png' class='profile-image'/>" +
         '<div class="info-right">' +
         '<div class="username">' +
-        '<a href="#">' +
         value.username +
-        "</a>" +
         "</div>" +
         '<div class="time">' +
         value.time +
@@ -39,7 +38,8 @@ $.ajax({
         '<div class="content">' +
         value.text +
         "</div>" +
-        "</a></div>"
+        "</a>" +
+        "</div>"
     );
   });
 });

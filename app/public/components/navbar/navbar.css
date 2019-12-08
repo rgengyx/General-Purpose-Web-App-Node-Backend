@@ -21,14 +21,6 @@
   color: #686868;
 }
 
-.search-bar {
-  display: inline-block;
-}
-
-.user {
-  float: right;
-}
-
 #add-post-btn {
   border: none;
   height: 28px;
@@ -37,4 +29,62 @@
   color: white;
   border-radius: 2px;
   padding: 0 8px;
+}
+
+.search-bar {
+  display: inline-block;
+}
+
+.search {
+  height: 24px;
+  width: 300px;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  padding-left: 8px;
+}
+
+.dropdown-container {
+  display: none;
+  position: absolute;
+  background: white;
+  width: 300px;
+}
+
+.dropdown-container div {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px;
+}
+
+.dropdown-container div a {
+  padding: 0;
+}
+
+.profile-image-search {
+  width: 24px;
+  height: 24px;
+  padding: 0 4px 4px 0;
+  float: left;
+}
+
+.user-container {
+  position: relative;
+  float: right;
+}
+
+.dropdown-container-user {
+  display: none;
+  position: absolute;
+  width: 200px;
+  background: white;
+  margin-top: 8px;
+}
+
+.dropdown-container-user div {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px;
+}
+
+.dropdown-container-user div a {
+  padding: 0;
 }

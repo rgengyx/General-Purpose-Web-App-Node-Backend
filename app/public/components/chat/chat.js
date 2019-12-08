@@ -29,7 +29,12 @@ $("#send-btn").click(function() {
   $("textarea").val("");
 
   $(".message-container").append(
-    "<div class='message-sent'>" + data.content + "</div>"
+    "<div class='message-sent-container'>" +
+      "<div class='message-sent'>" +
+      data.content +
+      "</div>" +
+      "<img src='../../assets/user.png' class='chat-profile-image'>" +
+      "</div>"
   );
   scrollToBottom(".message-container");
 });
@@ -37,7 +42,12 @@ $("#send-btn").click(function() {
 socket.on("new message", function(data) {
   if (data.receiverId == userId) {
     $(".message-container").append(
-      "<div class='message-received'>" + data.content + "</div>"
+      "<div class='message-received-container'>" +
+        "<img src='../../assets/user.png' class='chat-profile-image'>" +
+        "<div class='message-received'>" +
+        data.content +
+        "</div>" +
+        "</div>"
     );
   }
   scrollToBottom(".message-container");
@@ -57,11 +67,21 @@ $.ajax({
     $.each(res, function(index, value) {
       if (value.receiverId == userId) {
         $(".message-container").append(
-          "<div class='message-received'>" + value.content + "</div>"
+          "<div class='message-received-container'>" +
+            "<img src='../../assets/user.png' class='chat-profile-image'>" +
+            "<div class='message-received'>" +
+            value.content +
+            "</div>" +
+            "</div>"
         );
       } else {
         $(".message-container").append(
-          "<div class='message-sent'>" + value.content + "</div>"
+          "<div class='message-sent-container'>" +
+            "<div class='message-sent'>" +
+            value.content +
+            "</div>" +
+            "<img src='../../assets/user.png' class='chat-profile-image'>" +
+            "</div>"
         );
       }
     });
