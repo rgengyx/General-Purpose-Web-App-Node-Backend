@@ -1,2 +1,11 @@
-# Node-App
-General purpose node js application 
+# Express-App
+
+General purpose express js web application
+
+## Frontend
+
+Jquery
+
+## Backend
+
+Express.js
