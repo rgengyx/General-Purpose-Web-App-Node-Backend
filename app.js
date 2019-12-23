@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const controllers = require("../app/config/controllers");
+const controllers = require("./config/controllers");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
@@ -14,7 +14,7 @@ server.listen(PORT, () => {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(controllers);
 
-const chat = require("../app/controllers/chat");
+const chat = require("./controllers/chat");
 
 io.on("connection", function(socket) {
   console.log("Connected: connected");
