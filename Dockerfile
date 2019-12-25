@@ -1,10 +1,10 @@
-FROM node:8.9-alpine
+FROM node:8.17
 
 MAINTAINER ricky
 
-ADD . /app2/
+WORKDIR ../Node-App-Docker
 
-WORKDIR /app2
+COPY . ../Node-App-Docker/
 
 RUN npm install
 

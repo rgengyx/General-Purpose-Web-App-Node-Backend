@@ -11,7 +11,10 @@ server.listen(PORT, () => {
   console.log(`server started on ${PORT}`);
 });
 
-app.use(express.static(path.join(__dirname, "public")));
+// Configure frontend directory
+app.use(
+  express.static(path.join(__dirname, "../social_networking_web_app_frontend"))
+);
 app.use(controllers);
 
 const chat = require("./controllers/chat");
