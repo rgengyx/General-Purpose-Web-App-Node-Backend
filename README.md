@@ -1,6 +1,4 @@
-# Express-App
-
-General purpose express js web application
+# Social Networking Web App Node Backend
 
 ## Functions
 
@@ -8,10 +6,6 @@ General purpose express js web application
 - Add new posts
 - Private chat
 - Add friends
-
-## Frontend
-
-Jquery
 
 ## Backend
 
